@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver #to use h2
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: true #to have the console in the browser
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update #if no table then please create the table
+    show-sql: true  #to show the sql queries ran in the console
