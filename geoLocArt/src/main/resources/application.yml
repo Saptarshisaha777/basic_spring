@@ -1,0 +1,14 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: geoLoc
+
+google:
+  api:
+    key:
+
+openweather:
+  api:
+    key:
