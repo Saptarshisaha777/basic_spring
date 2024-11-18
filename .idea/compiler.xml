@@ -8,12 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="geoLocArt" />
+        <module name="ChatBackend" />
         <module name="accounts" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ChatBackend" options="-parameters" />
       <module name="accounts" options="-parameters" />
       <module name="geoLocArt" options="-parameters" />
     </option>

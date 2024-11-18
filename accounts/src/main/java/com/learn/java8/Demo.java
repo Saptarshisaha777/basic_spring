@@ -1,3 +1,5 @@
+package com.learn.java8;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
@@ -8,6 +10,17 @@ import java.util.Stack;
 public class Demo {
     public static void main(String[] args) {
         System.out.println("Hello World!");
+
+        int[] ums = {1, 2, 3,4,5};
+        Queue<Integer> queue = new LinkedList<>();
+        for (int num : ums) {
+            queue.add(num);
+        }
+        System.out.println();
+        System.out.println(queue.poll());
+        System.out.println(queue.peek());
+        System.out.println(queue);
+
     }
 
     public static Stack<Integer> createStack(@org.jetbrains.annotations.NotNull int[] nums) {
@@ -16,6 +29,7 @@ public class Demo {
             stack.push(num);
         }
         return stack;
+
     }
 
     public static @NotNull Queue<Integer> createQueue(int[] nums) {
@@ -32,5 +46,7 @@ public class Demo {
             pq.add(num);
         }
         return pq;
+
+
     }
 }
