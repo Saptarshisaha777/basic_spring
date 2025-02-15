@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: spring-ai-bot
+  ai:
+    ollama:
+      base-url: http://localhost:11434/
+      chat:
+        options:
+          model: deepseek-r1:1.5b
+  server:
+    port: 8080
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  resources:
+    static-locations: classpath:/static/

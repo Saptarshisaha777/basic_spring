@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+
+<body>
+<header class="chatbot-header">
+    <h1 class="chatbot-name">MYGPT</h1>
+</header>
+<div style="clear: both;"></div>
+<div class="chat-container">
+    <div class="chat-box" id="chatBoxContent">
+    <div class="chat-box" id="chatBox">
+    </div>
+        <div style="clear: both;"></div>
+        <!--<button id="attachBtn">📂</button>-->
+        </div>
+    <input type="file" id="pdfUpload" accept="application/pdf" style="display: none;">
+    <input type="text" id="messageInput" placeholder="Type your message...">
+    <div class="buttonbox flex">
+        <button id="sendMessage" class=" icon-button send-button">
+            <span>Send</span>
+        </button>
+        <!--<button id="checkAtsMessage" class="ats-button icon-button">
+
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3V21H21V3H3ZM19 19H5V5H19V19ZM7 7H17V9H7V7ZM7 11H17V13H7V11ZM7 15H13V17H7V15Z" fill="#333"/>
+            </svg>
+            <span class="icon-name">CheckATS</span>
+        </button>
+
+        <button id="SummarizeMessage" class="summarize-button icon-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3V21H21V3H3ZM19 19H5V5H19V19ZM7 7H17V9H7V7ZM7 11H13V13H7V11ZM7 15H17V17H7V15Z" fill="#333"/>
+            </svg>
+            <span class="icon-name">Summarize</span>
+        </button>
+        <button id="HelpmeMessage" class="help-button icon-button">
+
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 21L6 17H22V21H2ZM19 3C20.1 3 21 3.9 21 5C21 5.6 20.7 6.2 20.3 6.6L9 18L5 19L6 15L17.3 3.7C17.7 3.3 18.3 3 19 3ZM19 5L7 17L6.5 18.5L8 18L20 6C20 6 20 5 19 5Z" fill="#333"/>
+            </svg>
+            <span>HelpMeWrite</span>
+        </button>-->
+        <button id="helpMeWrite" class="icon-button help-button" title="Help Me Write">
+            <i class="fas fa-lightbulb"></i> <span>Help Me</span>
+        </button>
+        <button id="attachBtn" class="icon-button ats-button" title="Check ATS">
+            <i class="fas fa-clipboard-check"></i> <span>ATS Check</span>
+        </button>
+        <button id="summarizeText" class="icon-button summarize-button" title="Summarize Text">
+            <i class="fas fa-align-justify"></i> <span>Summarize</span>
+        </button>
+
+    </div>
+    <!-- The modal popup -->
+    <div id="jobDescriptionModal" style="display:none;">
+        <h2>Enter Job Description</h2>
+        <input id="jobDescriptionInput" type="text" placeholder="Enter job description">
+        <button id="submitJobDescription" class=" icon-button send-button"><span>Submit</span></button>
+    </div>
+</div>
+<footer class="chatbot-footer">
+    <p>&copy; 2023 MyGPT. All rights reserved.</p>
+</footer>
+<script src="chatbot.js"></script>
+</body>
+</html>

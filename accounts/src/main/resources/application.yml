@@ -2,6 +2,10 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: "accounts"
+  profiles:
+    active: "prod"
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver #to use h2
@@ -15,3 +19,9 @@ spring:
     hibernate:
       ddl-auto: update #if no table then please create the table
     show-sql: true  #to show the sql queries ran in the console
+  config:
+    import: "configserver:http://localhost:8071/" #optional is used to tell that to start even if configserver not started
+
+
+
+

@@ -3,6 +3,7 @@ package com.eazybytes.accounts.controller;
 import com.eazybytes.accounts.constants.AccountsConstants;
 import com.eazybytes.accounts.dto.CustomerDto;
 import com.eazybytes.accounts.dto.ResponseDto;
+import com.eazybytes.accounts.props.AccountsProperty;
 import com.eazybytes.accounts.services.IAccountService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
 
     private IAccountService accountService;
+    private AccountsProperty accountsProperty;
 
     @GetMapping
     public String hello() {
@@ -37,6 +39,13 @@ public class AccountController {
                                                         @Pattern(regexp = "[0-9]{10}") String mobileNumber) {
          CustomerDto customer = accountService.getCustomer(mobileNumber);
          return ResponseEntity.status(HttpStatus.OK).body(customer);
+
+    }
+
+    @GetMapping("/fetchApiDetails")
+    public ResponseEntity<AccountsProperty> fetchAPIDetails() {
+
+        return ResponseEntity.status(HttpStatus.OK).body(accountsProperty);
 
     }
 
