@@ -192,6 +192,7 @@ input[type="text"]:focus {
          background: rgba(0, 0, 0, 0.1);
      }
      .send-button {
+         margin-bottom: 2px;
          background: #007bff;
          color: white;
          border-radius: 50%;

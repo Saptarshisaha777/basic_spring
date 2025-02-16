@@ -43,6 +43,7 @@ document.addEventListener("keydown", (e) => {
 });
 
     document.getElementById('sendMessage').addEventListener('click', function() {
+    console.log('sendMessage clicked');
         const mode = document.getElementById('sendMessage').dataset.mode;
 
         if (mode === "score") {
@@ -52,9 +53,27 @@ document.addEventListener("keydown", (e) => {
         var userInput = document.getElementById("messageInput").value;
             if (userInput.trim() !== "") {
             displayUserMessage(userInput);
-            startChat(userInput); // Normal chat function
+            startChat(userInput,''); // Normal chat function
         }
     }});
+
+   document.getElementById('helpMeWrite').addEventListener('click', function() {
+   console.log('helpMeWrite clicked');
+          var userInput = document.getElementById("messageInput").value;
+              if (userInput.trim() !== "") {
+              displayUserMessage(userInput);
+              startChat(userInput,'helpMe'); // Normal chat function
+          }
+      });
+
+      document.getElementById('summarizeText').addEventListener('click', function() {
+      console.log('summarizeText clicked');
+             var userInput = document.getElementById("messageInput").value;
+                 if (userInput.trim() !== "") {
+                 displayUserMessage(userInput);
+                 startChat(userInput,'Summarize'); // Normal chat function
+             }
+         });
 
 /*document.getElementById("sendMessage").addEventListener("click", function() {
     var userInput = document.getElementById("userInput").value;
@@ -106,13 +125,13 @@ function displayAIMessageStream(message) {
      // Scroll to bottom
 }
 
-function sendToAI(userMessage) {
+function sendToAI(userMessage,msgtype) {
     fetch('/chatai/ask', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message: userMessage })
+        body: JSON.stringify({ message: userMessage , type: msgtype})
     })
     .then(response => response.json())
     .then(data => {
@@ -123,13 +142,13 @@ function sendToAI(userMessage) {
     });
 }
 
-async function startChat(userMessage) {
+async function startChat(userMessage,msgtype) {
      const response = await fetch('/chatai/askStream', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ message: userMessage })
+            body: JSON.stringify({ message: userMessage, type: msgtype })
         })
          const reader = response.body.getReader();
          const decoder = new TextDecoder();

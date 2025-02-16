@@ -28,7 +28,7 @@ public class ChatAIController {
     @PostMapping("/ask")
     public Mono askToAI(@RequestBody ChatRequest chatRequest) {
         String aiResponse =chatAIService.askToDeepAI(chatRequest.getMessage()).replace("<think>","").replace("</think>","");  // Replace this with actual AI logic
-        System.out.println(aiResponse);
+
         ChatResponse response = new ChatResponse();
         response.setResponse(aiResponse);
         return Mono.just(response);
@@ -37,7 +37,21 @@ public class ChatAIController {
     @PostMapping(value = "/askStream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> askToAIStream(@RequestBody ChatRequest chatRequest) {
         System.out.println("Inside as AI stream:: "+chatRequest.getMessage());
-        return chatAIService.askToDeepAIStream(chatRequest.getMessage());
+        String type = chatRequest.getType();
+        String aiRequest = "";
+        switch (type) {
+            case "helpMe":
+                aiRequest = ConstantPrompts.HelpPrompt.replace("[insert text]",chatRequest.getMessage());
+                break;
+            case "Summarize":
+                aiRequest = ConstantPrompts.SummarizePrompt.replace("[insert text]",chatRequest.getMessage());
+                break;
+            default:
+                aiRequest = chatRequest.getMessage();
+        }
+        System.out.println(type + "\n AI Request " +aiRequest);
+
+        return chatAIService.askToDeepAIStream(aiRequest);
     }
 
     @PostMapping("/upload")
